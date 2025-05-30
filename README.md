@@ -48,12 +48,19 @@ Request body:
 
 json
 
+
 {
+
   "title": "Task Title",
+  
   "description": "Task Description",
+  
   "status": "Pending",
+  
   "dueDate": "2025-06-01T10:00:00"
+  
 }
+
 Response:
 
 Status: 201 Created
@@ -61,6 +68,7 @@ Status: 201 Created
 Returns the created task's data, including the task ID.
 
 2. Get All Tasks
+   
 GET /api/tasks
 
 Response:
@@ -68,22 +76,37 @@ Response:
 json
 [
   {
+  
     "id": 1,
+    
     "title": "Task 1",
+    
     "description": "Description of task 1",
+    
     "status": "Pending",
+    
     "dueDate": "2025-06-01T10:00:00"
+    
   },
+  
   {
+  
     "id": 2,
+    
     "title": "Task 2",
+    
     "description": "Description of task 2",
+    
     "status": "InProgress",
+    
     "dueDate": "2025-06-02T12:00:00"
+    
   }
+  
 ]
 
 3. Get Task by ID
+   
 GET /api/tasks/{id}
 
 Parameters: id (task ID)
@@ -93,13 +116,21 @@ Response:
 json
 
 {
+
   "id": 1,
+  
   "title": "Task 1",
+  
   "description": "Description of task 1",
+  
   "status": "Pending",
+  
   "dueDate": "2025-06-01T10:00:00"
+  
 }
+
 4. Update Task Status
+   
 PUT /api/tasks/{id}
 
 Parameters: id (task ID)
@@ -109,15 +140,20 @@ Request body:
 json
 
 {
+
   "status": "Done"
+  
 }
+
 Response:
+
 
 Status: 200 OK
 
 Returns the updated task.
 
 5. Delete Task
+   
 DELETE /api/tasks/{id}
 
 Parameters: id (task ID)
@@ -129,7 +165,9 @@ Status: 204 No Content
 The task is deleted successfully.
 
 Frontend Views (MVC)
+
 1. Create Task:
+   
 A form where the user can create a new task by entering a title, description, status, and due date.
 
 URL: /Tasks/Create
@@ -137,6 +175,7 @@ URL: /Tasks/Create
 POST method submits the task.
 
 2. Edit Task:
+   
 A form to edit an existing task's details including title, description, status, and due date.
 
 URL: /Tasks/Edit/{id}
@@ -144,6 +183,7 @@ URL: /Tasks/Edit/{id}
 POST method submits the edited task.
 
 3. Delete Task:
+   
 A confirmation page asking the user to confirm deletion of a task.
 
 URL: /Tasks/Delete/{id}
@@ -151,6 +191,7 @@ URL: /Tasks/Delete/{id}
 POST method confirms the deletion.
 
 4. View Task Details:
+
 Displays the task details including the title, description, status, and due date.
 
 URL: /Tasks/Details/{id}
