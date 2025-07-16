@@ -8,9 +8,17 @@ using System.Threading.Tasks;
 
 namespace MOJTask.Controllers
 {
+
+    //[ApiController]
+    //[Route("api/[controller]")]
     public class TasksController : BaseController
     {
         private readonly MOJTaskDbContext _context;
+
+        public void Initialise()
+        {
+            _context.Initialise();
+        }
 
         public TasksController(MOJTaskDbContext context)
         {
@@ -26,6 +34,20 @@ namespace MOJTask.Controllers
             var task = await _context.Tasks.FindAsync(id);
             return task == null ? NotFound() : View(task);
         }
+
+
+        //For API => Get Task details
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetTask(int id)
+        //{
+        //    var task = await _context.Tasks.FindAsync(id);
+        //    if (task == null)
+        //    {
+        //        return NotFound(new { message = $"Task with ID {id} not found." });
+        //    }
+
+        //    return Ok(task);
+        //}
 
         public IActionResult Create() => View();
 

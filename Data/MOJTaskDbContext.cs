@@ -45,5 +45,12 @@ namespace MOJTask.Data
             );
 
         }
+
+        // For dev only
+        public void Initialise()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
     }
 }

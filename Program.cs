@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddControllers();
+
 builder.Services.AddDbContext<MOJTaskDbContext> (options =>
     options.UseSqlite("Data Source = MOJTask.db")
     );
