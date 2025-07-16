@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 namespace MOJTask.Controllers
 {
 
-    //[ApiController]
-    //[Route("api/[controller]")]
     public class TasksController : BaseController
     {
         private readonly MOJTaskDbContext _context;
@@ -60,6 +58,7 @@ namespace MOJTask.Controllers
             {
                 _context.Add(task);
                 await _context.SaveChangesAsync();
+                Alert("A new task has been successfully created", AlertType.info);
                 return RedirectToAction(nameof(Index));
             }
             return View(task);  // Return the view with validation errors
@@ -97,6 +96,8 @@ namespace MOJTask.Controllers
                 {
                     _context.Update(task);
                     await _context.SaveChangesAsync();
+                    Alert("Task has been successfully updated", AlertType.info);
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -140,6 +141,7 @@ namespace MOJTask.Controllers
             var task = await _context.Tasks.FindAsync(id);
             _context.Tasks.Remove(task);
             await _context.SaveChangesAsync();
+            Alert("Task has been successfully deleted", AlertType.info);
             return RedirectToAction(nameof(Index));
         }
 
